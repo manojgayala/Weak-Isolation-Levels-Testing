@@ -1,2 +1,2 @@
 # Weak-Isolation-Levels-Testing
-The litmus test cases for project.
+The litmus testcases for the project will be available in this repository. 
