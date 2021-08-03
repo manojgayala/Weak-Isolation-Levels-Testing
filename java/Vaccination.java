@@ -9,7 +9,7 @@ class Sql {
     static int NUM_THREADS = 3;
     static int TOTAL_OPS = NUM_THREADS*OPS_PER_THREAD;
     static int NUM_OPS = 3;
-    static int runs = 2;
+    static int runs;
     static List<Set<Integer>> values;
 
     public static void random_operations(int[] list,int tid)
@@ -49,6 +49,7 @@ class Sql {
         }
     }
 
+    runs = Integer.parseInt(args[2]);
     int[][] thread_functions = new int[NUM_THREADS][OPS_PER_THREAD+1];
 
     for(int i=0;i<NUM_THREADS;i++)
@@ -61,7 +62,6 @@ class Sql {
     for(int i=0;i<TOTAL_OPS;i++)
         values.add(new HashSet<Integer>());
 
-    Iteration.Setter(TOTAL_OPS,OPS_PER_THREAD);
     for(int i=0;i<NUM_THREADS;i++)
     {
         for(int j=0;j<OPS_PER_THREAD+1;j++)
@@ -74,6 +74,7 @@ class Sql {
 
     for(int i = 0; i < runs; ++i) { 
         
+            Iteration.Setter(TOTAL_OPS,OPS_PER_THREAD);
             for(int j=0;j<NUM_THREADS;j++)
             {                    
                 Iteration t = new Iteration(thread_functions[j]);
@@ -136,11 +137,11 @@ public class Iteration extends Thread{
     static int OPS_PER_THREAD;
     static int NUM_VACCINES = 10;
     static int[][] results;
-    static String server = "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false";
-    static String username = "root";
-    static String password = "codechef";
+    static String server = "jdbc:mysql://localhost:3306/project?user=root&autoReconnect=true&useSSL=false";
+    static String username = "root";//"root";
+    static String password = "codechef";//"codechef";
     static String name;
-
+// /project?autoReconnect=true&useSSL=false
     public static void Setter(int total,int ops)
     {
         TOTAL_OPS = total;
@@ -154,15 +155,19 @@ public class Iteration extends Thread{
                     username,
                     password
                 );
+            System.out.println("Connection established....");
 
+            Statement create_stmt = con.createStatement();
+            create_stmt.execute("CREATE TABLE if not exists STORE (X int);");
             Statement del_stmt = con.createStatement();
             del_stmt.execute("DELETE FROM STORE;");
 
             PreparedStatement insert_stmt = con.prepareStatement("INSERT INTO STORE(X) VALUES (?);");
             insert_stmt.setInt(1,NUM_VACCINES);
             insert_stmt.execute();
+            con.close();
         }catch(SQLException e){
-            System.out.println("Connection denied!!");
+            System.out.println("Connection Failed!!");
             e.printStackTrace();
         }       
 
@@ -301,5 +306,5 @@ public class Iteration extends Thread{
     }
 }
 
-// export CLASSPATH="mysql-connector-java-5.1.48-bin.jar"
-// java Sql.java 1 causal
+// export CLASSPATH="mysql-connector-java-5.1.47-bin.jar"
+// java Sql.java 1 causal 1
