@@ -156,6 +156,7 @@ public class Iteration extends Thread{
                     password
                 );
             System.out.println("Connection established....");
+            con.setAutoCommit(false);
 
             Statement create_stmt = con.createStatement();
             create_stmt.execute("CREATE TABLE if not exists STORE (X int);");
@@ -165,6 +166,7 @@ public class Iteration extends Thread{
             PreparedStatement insert_stmt = con.prepareStatement("INSERT INTO STORE(X) VALUES (?);");
             insert_stmt.setInt(1,NUM_VACCINES);
             insert_stmt.execute();
+            con.commit();
             con.close();
         }catch(SQLException e){
             System.out.println("Connection Failed!!");
@@ -187,6 +189,7 @@ public class Iteration extends Thread{
                     password
                 );
         
+            con.setAutoCommit(false);
         }catch(SQLException e){
             System.out.println("Connection denied!!");
             e.printStackTrace();
@@ -241,6 +244,7 @@ public class Iteration extends Thread{
             while(rs.next())
                 vaccines = rs.getInt(1);
 
+            con.commit();
             if(vaccines>0)
             {
                 PreparedStatement prep_stmt = con.prepareStatement("UPDATE STORE SET X = ?;");
@@ -268,6 +272,8 @@ public class Iteration extends Thread{
             while(rs.next())
                 vaccines = rs.getInt(1);
 
+            con.commit();
+
             if(vaccines>0)
                 return 0;
             
@@ -287,6 +293,7 @@ public class Iteration extends Thread{
             int vaccines=0;
             while(rs.next())
                 vaccines = rs.getInt(1);
+            con.commit();
             return vaccines;
         }catch(SQLException Ex){
             System.out.println("GetCnt error!!");
