@@ -163,8 +163,8 @@ public class Iteration extends Thread{
             Statement del_stmt = con.createStatement();
             del_stmt.execute("DELETE FROM STORE;");
 
-            PreparedStatement insert_stmt = con.prepareStatement("INSERT INTO STORE(X) VALUES (?);");
-            insert_stmt.setInt(1,NUM_VACCINES);
+            PreparedStatement insert_stmt = con.prepareStatement("INSERT INTO STORE(X) VALUES ("+NUM_VACCINES+");");
+            // insert_stmt.setInt(1,NUM_VACCINES);
             insert_stmt.execute();
             con.commit();
             con.close();
@@ -244,17 +244,18 @@ public class Iteration extends Thread{
             while(rs.next())
                 vaccines = rs.getInt(1);
 
-            con.commit();
             if(vaccines>0)
             {
-                PreparedStatement prep_stmt = con.prepareStatement("UPDATE STORE SET X = ?;");
-                vaccines--;
-                prep_stmt.setInt(1,vaccines);
+                PreparedStatement prep_stmt = con.prepareStatement("UPDATE STORE SET X = "+--vaccines+";");
+                // vaccines--;
+                // prep_stmt.setInt(1,vaccines);
                 prep_stmt.execute();
             
+                con.commit();
                 return 1;
             }
 
+            con.commit();
             return 0;
         }catch(SQLException Ex){
             System.out.println("Connection denied!!");
