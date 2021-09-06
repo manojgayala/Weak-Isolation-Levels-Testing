@@ -138,8 +138,8 @@ public class Iteration extends Thread{
     static int NUM_VACCINES = 10;
     static int[][] results;
     static String server = "jdbc:mysql://localhost:3306/project?user=root&autoReconnect=true&useSSL=false";
-    static String username = "root";//"root";
-    static String password = "codechef";//"codechef";
+    static String username = "test";
+    static String password = "codechef";
     static String name;
 // /project?autoReconnect=true&useSSL=false
     public static void Setter(int total,int ops)
@@ -314,5 +314,4 @@ public class Iteration extends Thread{
     }
 }
 
-// export CLASSPATH="mysql-connector-java-5.1.47-bin.jar"
-// java Sql.java 1 causal 1
+// java -cp ../mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar Sql.java 1 causal 1
