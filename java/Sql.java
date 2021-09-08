@@ -127,7 +127,7 @@ class Sql {
     }
 }
 
-public class Iteration extends Thread{
+class Iteration extends Thread{
 
     Connection con;
     int[] params;
@@ -137,9 +137,9 @@ public class Iteration extends Thread{
     static int OPS_PER_THREAD;
     static int NUM_VACCINES = 10;
     static int[][] results;
-    static String server = "jdbc:mysql://localhost:3306/project?user=root&autoReconnect=true&useSSL=false";
+    static String server = "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false";
     static String username = "test";
-    static String password = "codechef";
+    static String password = "newpassword";
     static String name;
 // /project?autoReconnect=true&useSSL=false
     public static void Setter(int total,int ops)
@@ -314,4 +314,5 @@ public class Iteration extends Thread{
     }
 }
 
-// java -cp ../mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar Sql.java 1 causal 1
+// javac Sql.java
+// java -cp :mysql-connector-java-5.1.47.jar Sql 1 causal 1
