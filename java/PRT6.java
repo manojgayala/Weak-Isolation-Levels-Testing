@@ -399,6 +399,9 @@ class Iteration extends Thread{
             return cnt;
         }catch(SQLException e){
             System.out.println("Studentcnt error!!");
+            try{
+                fout.write("Error!! \n");
+            }catch(IOException i){i.printStackTrace();}
             e.printStackTrace();
             return -1;
         }
@@ -420,6 +423,9 @@ class Iteration extends Thread{
             return res;
         }catch(SQLException e){
             System.out.println("StudentName error!!");
+            try{
+                fout.write("Error!! \n");
+            }catch(IOException i){i.printStackTrace();}
             e.printStackTrace();
             return res;
         }
@@ -434,6 +440,9 @@ class Iteration extends Thread{
             return 1;
         }catch(SQLException e){
             System.out.println("AddStudent error!!");
+            try{
+                fout.write("Error!! \n");
+            }catch(IOException i){i.printStackTrace();}
             e.printStackTrace();
             return -1;
         }
@@ -450,7 +459,7 @@ class Iteration extends Thread{
         }catch(SQLException e){
             System.out.println("UpdateStudent error!!");
             try{
-                fout.write("Update Error!! \n");
+                fout.write("Error!! \n");
             }catch(IOException i){i.printStackTrace();}
             
             e.printStackTrace();
@@ -468,6 +477,9 @@ class Iteration extends Thread{
             return 1;
         }catch(SQLException e){
             System.out.println("DeleteStudent error!!");
+            try{
+                fout.write("Error!! \n");
+            }catch(IOException i){i.printStackTrace();}
             e.printStackTrace();
             return -1;
         }
@@ -484,6 +496,9 @@ class Iteration extends Thread{
 
         }catch(SQLException e){
             System.out.println("DeleteSpecificStudent error!!");
+            try{
+                fout.write("Error!! \n");
+            }catch(IOException i){i.printStackTrace();}
             e.printStackTrace();
             return -1;
         }
