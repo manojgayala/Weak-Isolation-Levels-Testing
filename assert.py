@@ -73,7 +73,7 @@ elif name == 'PRT5':
 elif name == 'PRT6':
 
 	print("Searching in "+name+" for")
-	search_word = "Update Error!! \n"
+	search_word = "Error!! \n"
 	print(search_word)
 
 	if(search_word in file.read()):
