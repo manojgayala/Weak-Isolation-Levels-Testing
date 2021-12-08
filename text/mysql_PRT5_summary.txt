@@ -1,0 +1,6 @@
+T0_O0 (Write) :{1 }
+T0_O1 (Read) :{1 }
+T1_O0 (Write) :{1 }
+T1_O1 (Read) :{1 }
+T1_O2 (DeleteSpec) :{1 }
+T1_O3 (Read) :{1 }

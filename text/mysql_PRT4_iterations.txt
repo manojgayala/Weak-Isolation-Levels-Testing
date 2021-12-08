@@ -1,0 +1,9 @@
+1(AddStudent) 
+{Manoj }(SelectName) 
+1(UpdateStudent) 
+{Manoj }(SelectName) 
+1(AddStudent) 
+2(Studentcnt) 
+1(DeleteSpecificStudent) 
+1(Studentcnt) 
+

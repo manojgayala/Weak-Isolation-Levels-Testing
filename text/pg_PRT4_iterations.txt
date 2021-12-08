@@ -1,0 +1,9 @@
+1(AddStudent) 
+{Manoj Manoj*** Manoj* Manoj** Manoj*** Manoj Manoj** Manoj** Manoj** Manoj** Manoj* Manoj* Manoj Manoj*** Manoj* Manoj** Manoj** Manoj** Manoj** Manoj* Manoj*** Manoj** Manoj** Manoj** Manoj** Manoj* Manoj* Manoj* Manoj** }(SelectName) 
+1(UpdateStudent) 
+{Manoj Manoj*** Manoj* Manoj*** Manoj** Manoj** Manoj** Manoj** Manoj** Manoj Manoj* Manoj* Manoj Manoj** Manoj** Manoj** Manoj** Manoj*** Manoj* Manoj* Manoj** Manoj** Manoj** Manoj** Manoj** Manoj*** Manoj* Manoj* Manoj* }(SelectName) 
+1(AddStudent) 
+30(Studentcnt) 
+1(DeleteSpecificStudent) 
+27(Studentcnt) 
+

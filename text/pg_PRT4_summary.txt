@@ -1,0 +1,8 @@
+T0_O0 (Write) :{1 }
+T0_O1 (SelectName) :{Manoj* Manoj*** Manoj** Manoj }
+T0_O2 (Update) :{1 }
+T0_O3 (SelectName) :{Manoj* Manoj*** Manoj** Manoj }
+T1_O0 (Write) :{1 }
+T1_O1 (Read) :{30 }
+T1_O2 (DeleteSpec) :{1 }
+T1_O3 (Read) :{27 }
