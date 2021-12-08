@@ -221,20 +221,23 @@ class Iteration extends Thread{
             System.out.println("Connection established....");
             con.setAutoCommit(false);
 
-            Statement create_stmt = con.createStatement();
-            create_stmt.execute("CREATE TABLE STUDENTS (NAME VARCHAR(20), PLACE VARCHAR(20), MARKS INTEGER);");
-            con.commit();
-                                                                // the database is setup
-            Statement del_stmt = con.createStatement();
-            del_stmt.execute("DELETE FROM STUDENTS;");
-            con.commit();
-
-            con.close();
         }catch(SQLException e){
             System.out.println("Connection Failed!!");
             e.printStackTrace();
-        }       
+        } 
 
+        try{
+            Statement create_stmt = con.createStatement();
+            create_stmt.execute("CREATE TABLE STUDENTS (NAME VARCHAR(20), PLACE VARCHAR(20), MARKS INTEGER);");
+            con.commit();
+        }catch(SQLException e){}
+            
+        try{
+            Statement del_stmt = con.createStatement();
+            del_stmt.execute("DELETE FROM STUDENTS;");  // the database is setup
+            con.commit();
+            con.close();
+        }catch(SQLException e){}
     }
 
     public Iteration(){

@@ -78,6 +78,14 @@ public class PRT3 {                  // 3 threads; Insert vs Delete vs Update
             Iteration.name = "pg";
             Iteration.server = "jdbc:postgresql://localhost/project?user=test&password=newpassword&ssl=false";      
         }
+        else
+        if(db.equals("3"))
+        {
+            Iteration.name = "sqlsv";
+            Iteration.server = "jdbc:sqlserver://localhost:1433;databaseName=project;user=sa;password=Manoj@123;ssl=false";      
+            Iteration.username = "sa";
+            Iteration.password = "Manoj@123";
+        }
     }
 
     runs = Integer.parseInt(args[1]);
@@ -226,20 +234,23 @@ class Iteration extends Thread{
             System.out.println("Connection established....");
             con.setAutoCommit(false);
 
-            Statement create_stmt = con.createStatement();
-            create_stmt.execute("CREATE TABLE STUDENTS (NAME VARCHAR(20), PLACE VARCHAR(20), MARKS INTEGER);");
-            con.commit();
-
-            Statement del_stmt = con.createStatement();
-            del_stmt.execute("DELETE FROM STUDENTS;");
-            con.commit();
-
-            con.close();
         }catch(SQLException e){
             System.out.println("Connection Failed!!");
             e.printStackTrace();
-        }       
+        } 
 
+        try{
+            Statement create_stmt = con.createStatement();
+            create_stmt.execute("CREATE TABLE STUDENTS (NAME VARCHAR(20), PLACE VARCHAR(20), MARKS INTEGER);");
+            con.commit();
+        }catch(SQLException e){}
+            
+        try{
+            Statement del_stmt = con.createStatement();
+            del_stmt.execute("DELETE FROM STUDENTS;");  // the database is setup
+            con.commit();
+            con.close();
+        }catch(SQLException e){}
     }
 
     public Iteration(){
